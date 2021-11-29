@@ -3,13 +3,13 @@ GO
 -- ================================================
 -- Author:		einajade-forest
 -- Create date: 24-NOV-2021
--- Description:	Sample database for My Cookbook Indexes App
+-- Description:	Sample database for My Cookbook Catalogue App
 -- ================================================
 
-CREATE DATABASE MyCookbookIndexDb
+CREATE DATABASE MyCookbookCatalogueDb
 GO
 
-USE MyCookbookIndexDb
+USE MyCookbookCatalogueDb
 GO
 
 -- ================================================
