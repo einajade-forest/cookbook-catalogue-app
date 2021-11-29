@@ -1,0 +1,218 @@
+﻿<Window x:Class="UI.ManageLocationsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UI"
+        mc:Ignorable="d"
+        Title=""
+        Height="450"
+        Width="800"
+        ResizeMode="NoResize" >
+    <Grid x:Name="GridManageLocationsWindow">
+        <Label Content="Manage Locations"
+               HorizontalAlignment="Left"
+               VerticalAlignment="Top"
+               Margin="22,20,0,0"
+               FontSize="22"
+               FontWeight="Bold" />
+
+        <TextBlock Text="To Edit:   Select location from table and enter revised location name below."
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Top"
+                   Margin="35,76,0,0"
+                   Width="364"
+                   Height="Auto"
+                   TextWrapping="Wrap"
+                   FontSize="12"/>
+        <TextBlock Text="To Add:  Ensure that no existing location has been selected for updating and enter new location name."
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Top"
+                   Margin="35,116,0,0"
+                   Width="364"
+                   Height="Auto"
+                   TextWrapping="Wrap"
+                   FontSize="12"/>
+        <TextBlock Text="To Delete:  Click the [DELETE] button in the desired row."
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Top"
+                   Margin="35,157,0,0"
+                   Width="364"
+                   Height="Auto"
+                   TextWrapping="Wrap"
+                   FontSize="12"/>
+        <TextBlock Text="*** NOTE:  Location can only be deleted if zero books are assigned"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Top"
+                   Margin="35,175,0,0"
+                   TextWrapping="NoWrap"
+                   FontSize="12"
+                   FontStyle="Italic"
+                   Foreground="Red" />
+        
+        <!--Positioning for Location and Tag Management windows-->
+        <Rectangle HorizontalAlignment="Left"
+                   VerticalAlignment="Top"
+                   Margin="35,204,0,0"
+                   Width="364"
+                   Height="140"                   
+                   Stroke="Black" />
+
+        <Label Content="Updating:"
+            HorizontalAlignment="Left"
+            Margin="51,220,0,0"
+            VerticalAlignment="Top"
+            FontSize="14" />
+        <Label x:Name="LblSelectedLocation" 
+            Content="&lt; Select location from table (if req'd) &gt;"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Margin="127,220,0,0"
+            Width="252"
+            Height="30"
+            FontSize="14"
+            FontStyle="Italic"
+            Foreground="Gray"/>
+        <Label x:Name="LblUpdateTo" 
+            Content=" to"
+            Visibility="Hidden"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Margin="352,220,0,0"
+            Width="26"
+            Height="30"
+            HorizontalContentAlignment="Right"
+            FontSize="14"
+            Background="White"/>
+
+        <Label Content="Location:"
+               HorizontalAlignment="Left"
+               Margin="51,257,0,0"
+               VerticalAlignment="Top"
+               FontSize="14" />
+        <TextBox x:Name="TBxLocationName" 
+                 Text="&lt; Enter new location name &gt;"
+                 MaxLength="50"
+                 HorizontalAlignment="Left"
+                 VerticalAlignment="Top"
+                 Margin="127,257,0,0"
+                 Padding="4,3,4,1"
+                 Width="252"
+                 Height="30"
+                 FontSize="14"
+                 FontStyle="Italic"
+                 TextWrapping="NoWrap"
+                 Background="GhostWhite"
+                 Foreground="Gray"
+                 GotFocus="TBxLocationName_GotFocus"
+                 MouseDoubleClick="TBxLocationName_MouseDoubleClick"
+                 TextChanged="TBxLocationName_TextChanged"/>
+        <Button x:Name="BtnClearSelected"
+                Content="Clear Selection"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Margin="127,296,0,0"
+                Width="123"
+                Height="30"
+                FontSize="14"
+                Click="BtnClearSelected_Click" />
+        <Button x:Name="BtnSaveLocation"
+                Content="Save Location"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Margin="256,296,0,0"
+                Width="123"
+                Height="30"
+                FontSize="14"
+                Click="BtnSaveLocation_Click" />
+
+        <DataGrid x:Name="DgrdLocationsList"
+                  HorizontalAlignment="Right"
+                  VerticalAlignment="Center"                  
+                  Margin="0,0,35,0"
+                  Height="270"
+                  AlternatingRowBackground="GhostWhite"
+                  AlternationCount="2"
+                  AutoGenerateColumns="False"                                 
+                  ColumnHeaderHeight="25"
+                  RowHeight="25"
+                  VerticalScrollBarVisibility="Visible"
+                  HorizontalScrollBarVisibility="Disabled"
+                  SelectionMode="Single"
+                  SelectionChanged="DgrdLocationsList_SelectionChanged" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Shelf Location"
+                                    Binding="{Binding Location}"
+                                    CanUserSort="True"
+                                    CanUserReorder="False"
+                                    CanUserResize="False"
+                                    Width="170"
+                                    IsReadOnly="True">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="Padding"
+                                    Value="7,4,0,4" />
+                            <Setter Property="FontWeight"
+                                    Value="SemiBold" />
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                    <DataGridTextColumn.ElementStyle>
+                        <Style>
+                            <Setter Property="TextBlock.Padding"
+                                    Value="7,3,7,2" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Books"
+                                    Binding="{Binding BookCount}"
+                                    CanUserSort="False"
+                                    CanUserReorder="False"
+                                    CanUserResize="False"
+                                    Width="63"
+                                    IsReadOnly="True">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="Padding"
+                                    Value="7,4,0,4" />
+                            <Setter Property="FontWeight"
+                                    Value="SemiBold" />
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                    <DataGridTextColumn.ElementStyle>
+                        <Style>
+                            <Setter Property="TextBlock.Padding"
+                                    Value="7,3,7,2" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTemplateColumn Width="61"
+                                        CanUserReorder="False"
+                                        CanUserResize="False"
+                                        CanUserSort="False">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="BtnDeleteLocation"
+                                    Content="DELETE" 
+                                    Width="47"
+                                    Height="20"
+                                    FontSize="10.5"
+                                    Click="BtnDeleteLocation_Click"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!--Close window position-->
+        <Button x:Name="BtnClose"
+                Content="Close"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Bottom"
+                Margin="0,0,0,25"                
+                Width="250"
+                Height="30"
+                FontSize="14"
+                Click="BtnClose_Click" />
+
+    </Grid>
+</Window>

@@ -1,0 +1,207 @@
+﻿<Page x:Class="UI.RecipeResultsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:UI"
+      xmlns:sys="clr-namespace:System;assembly=mscorlib"
+      mc:Ignorable="d"
+      d:DesignHeight="412"
+      d:DesignWidth="772"
+      Title="RecipeResultsPage">
+
+    <Grid Name="GridRecipeResultsPage">
+        <Label Content="Recipe Search Results"
+               HorizontalAlignment="Left"
+               VerticalAlignment="Top"
+               Margin="22,20,0,0"
+               FontSize="22"
+               FontWeight="Bold" />
+        
+        <!--Positions for Recipe result Pages-->
+        <Label Content="Search Term:"
+               HorizontalAlignment="Right"
+               VerticalAlignment="Top"
+               Margin="0,32,235,0" 
+               FontSize="14"
+               FontWeight="DemiBold" />
+        <Label Name="LblSearchedTerm"
+               Content="&lt; Searched Term &gt;"
+               HorizontalAlignment="Right"
+               VerticalAlignment="Top"
+               Margin="0,34,18,0"
+               Padding="7,2,4,1"
+               FontSize="14"
+               FontStyle="Italic"
+               Width="214"
+               Height="26"
+               BorderBrush="WhiteSmoke"
+               BorderThickness="1"/>
+        
+        <!--Positions for Recipe result Pages-->
+        <DataGrid x:Name="DgrdSearchResults"
+                  HorizontalAlignment="Center"
+                  VerticalAlignment="Center"
+                  Height="270"
+                  AlternatingRowBackground="GhostWhite"
+                  AlternationCount="2"
+                  AutoGenerateColumns="True"                                 
+                  ColumnHeaderHeight="30"
+                  RowHeight="{x:Static sys:Double.NaN}"
+                  VerticalScrollBarVisibility="Visible"
+                  HorizontalScrollBarVisibility="Disabled" >
+            <DataGrid.RowStyle>
+                <Style TargetType="DataGridRow">
+                    <Setter Property="IsEnabled"
+                            Value="false" />
+                </Style>
+            </DataGrid.RowStyle>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name"
+                                    Binding="{Binding RecipeName}"
+                                    CanUserSort="True"
+                                    CanUserReorder="False"
+                                    CanUserResize="False"
+                                    Width="250"
+                                    IsReadOnly="True">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="Padding"
+                                    Value="7,3,0,2" />
+                            <Setter Property="FontSize"
+                                    Value="14" />
+                            <Setter Property="FontWeight"
+                                    Value="SemiBold" />
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                    <DataGridTextColumn.ElementStyle>
+                        <Style>
+                            <Setter Property="TextBlock.TextWrapping"
+                                    Value="Wrap" />
+                            <Setter Property="TextBlock.FontSize"
+                                    Value="13" />
+                            <Setter Property="TextBlock.Padding"
+                                    Value="7,3,7,2" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Cookbook Title"
+                                    Binding="{Binding CookbookTitle}"
+                                    CanUserSort="True"
+                                    CanUserReorder="False"
+                                    CanUserResize="False"
+                                    Width="254"
+                                    IsReadOnly="True">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="Padding"
+                                    Value="7,3,0,2" />
+                            <Setter Property="FontSize"
+                                    Value="14" />
+                            <Setter Property="FontWeight"
+                                    Value="SemiBold" />
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                    <DataGridTextColumn.ElementStyle>
+                        <Style>
+                            <Setter Property="TextBlock.TextWrapping"
+                                    Value="Wrap" />
+                            <Setter Property="TextBlock.FontSize"
+                                    Value="13" />
+                            <Setter Property="TextBlock.Padding"
+                                    Value="7,3,7,2" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Page"
+                                    Binding="{Binding Page}"
+                                    CanUserSort="False"
+                                    CanUserReorder="False"
+                                    CanUserResize="False"
+                                    Width="51"
+                                    IsReadOnly="True">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="Padding"
+                                    Value="7,3,0,2" />
+                            <Setter Property="FontSize"
+                                    Value="14" />
+                            <Setter Property="FontWeight"
+                                    Value="SemiBold" />
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                    <DataGridTextColumn.ElementStyle>
+                        <Style>
+                            <Setter Property="TextBlock.FontSize"
+                                    Value="13" />
+                            <Setter Property="TextBlock.Padding"
+                                    Value="7,3,7,2" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Book Location"
+                                    Binding="{Binding Location}"
+                                    CanUserSort="True"
+                                    CanUserReorder="False"
+                                    CanUserResize="False"
+                                    Width="158"
+                                    IsReadOnly="True" >
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="Padding"
+                                    Value="7,3,0,2" />
+                            <Setter Property="FontSize"
+                                    Value="14" />
+                            <Setter Property="FontWeight"
+                                    Value="SemiBold" />
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                    <DataGridTextColumn.ElementStyle>
+                        <Style>
+                            <Setter Property="TextBlock.FontSize"
+                                    Value="13" />
+                            <Setter Property="TextBlock.Padding"
+                                    Value="7,3,7,2" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <TextBox x:Name="TBxNoResults"
+                 Text="No Results Found" 
+                 Visibility="Hidden"
+                 HorizontalAlignment="Left"
+                 VerticalAlignment="Top" 
+                 Margin="24,101,0,0" 
+                 Width="710"
+                 Height="236" 
+                 TextWrapping="NoWrap" 
+                 FontSize="14"
+                 HorizontalContentAlignment="Center"
+                 VerticalContentAlignment="Center"
+                 FontWeight="Bold" 
+                 Foreground="DarkGray"/>
+
+        <!--Same position as SearchPage-->
+        <Button x:Name="BtnHome"
+                Content="Home"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Bottom" 
+                Margin="17,0,0,25"
+                Width="123"
+                Height="30"
+                FontSize="14"
+                Click="BtnHome_Click" />
+        <Button x:Name="BtnNewSearch"
+                Content="New Search"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Bottom"
+                Margin="150,0,0,25" 
+                Width="123"
+                Height="30"
+                FontSize="14"
+                Click="BtnNewSearch_Click"/>
+
+    </Grid>
+</Page>

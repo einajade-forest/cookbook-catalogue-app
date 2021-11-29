@@ -1,0 +1,113 @@
+﻿<Page x:Class="UI.SearchPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:UI"
+      mc:Ignorable="d"
+      d:DesignHeight="412"
+      d:DesignWidth="772"
+      Title="SearchPage">
+    <Grid x:Name="GridSearchPage"
+          Margin="0,0,0,0">
+        <Label Content="Recipe Search"
+               HorizontalAlignment="Left"
+               VerticalAlignment="Top"
+               Margin="22,20,0,0"
+               FontSize="22"
+               FontWeight="Bold" />
+
+        <Rectangle Name="RecKeywordElements"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   Margin="52,90,52,222" 
+                   Width="668"
+                   Height="100"
+                   Stroke="Black" />
+        <Label Content="Search by Keyword"
+               HorizontalAlignment="Left"
+               VerticalAlignment="Center"
+               Margin="65,74,0,304" 
+               Height="34" 
+               FontSize="15"
+               FontWeight="DemiBold"
+               Background="White" />
+        <TextBox x:Name="TBxSearchRecipeKeyword"
+                 HorizontalAlignment="Left"
+                 VerticalAlignment="Top"
+                 Margin="100,127,0,0"
+                 Padding="4,3,4,1"
+                 Width="427"
+                 Height="30"
+                 FontSize="14"
+                 TextWrapping="NoWrap" 
+                 Background="GhostWhite"/>
+        <Button x:Name="BtnSearchRecipe"
+                Content="Search"
+                Margin="549,127,100,255"
+                Width="123"
+                Height="30"
+                FontSize="14"
+                Click="BtnSearchRecipe_Click" />
+
+        <Rectangle Name="RecTagElements"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   Margin="52,225,52,87" 
+                   Width="668"
+                   Height="100"
+                   Stroke="Black" />
+        <Label Content="Browse by Tag"
+               HorizontalAlignment="Left"
+               VerticalAlignment="Center"
+               Margin="65,209,0,169"
+               Height="34" 
+               FontSize="15"
+               FontWeight="DemiBold"
+               Background="White" />
+        <ComboBox x:Name="CBxSelectTag"
+                  HorizontalAlignment="Left"
+                  VerticalAlignment="Top"
+                  Margin="100,262,0,0"
+                  Width="250"
+                  Height="30"
+                  Background="GhostWhite" >
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding TagName}"
+                               Padding="2,2,2,1"
+                               Width="220"
+                               FontSize="14" />
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <Button x:Name="BtnDisplayTaggedList"
+                Content="Display Recipes"
+                Margin="372,262,277,120"
+                Width="123"
+                Height="30"
+                FontSize="14"
+                Click="BtnDisplayTaggedList_Click" />
+        <Button x:Name="BtnManageTags"
+                Content="Manage Tags"
+                Margin="549,262,100,120"
+                Width="123"
+                Height="30"
+                FontSize="14"
+                FontWeight="DemiBold"
+                Background="DarkBlue"
+                Foreground="LightGray"
+                Click="BtnManageTags_Click" />
+
+        <Button x:Name="BtnHome"
+                Content="Home"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Bottom" 
+                Margin="52,0,0,25"
+                Width="123"
+                Height="30"
+                FontSize="14"
+                Click="BtnHome_Click" />
+
+    </Grid>
+</Page>
