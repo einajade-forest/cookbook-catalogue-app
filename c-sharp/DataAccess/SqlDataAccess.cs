@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -16,7 +16,7 @@ namespace DataAccess
         /// <summary>
         /// Microsoft SQL Server Connection String.
         /// </summary>
-        private static readonly string connectionString = ConfigurationManager.ConnectionStrings["CbIConnection_Prod"].ConnectionString;
+        private static readonly string connectionString = ConfigurationManager.ConnectionStrings["CbCConnection_Prod"].ConnectionString;
 
         /// <summary>
         /// Method to delete cookbook from database.
